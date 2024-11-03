@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự Báo Thời Tiết</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="weather-container">
+    <h1>Dự Báo Thời Tiết</h1>
+
+    <!-- Search Form -->
+    <form class="search-form" action="/weather" method="get">
+        <input type="text" id="city" name="city" placeholder="Nhập tên thành phố" required>
+        <button type="submit">Tìm kiếm</button>
+    </form>
+
+    <!-- Current Weather Information -->
+    <div class="current-weather">
+        <p class="city">
+            <strong>Thời tiết của:</strong> <span th:text="${cityName}">Hà Nội</span>, <span th:text="${countryCode}">VN</span>
+        </p>
+        <p class="error-message" th:if="${error}" style="color: red;">
+        <strong></strong> <span th:text="${error}"></span>
+    </p>
+        <div class="current-weather-content">
+            <div class="weather-left">
+                <div class="temperature">
+                    <p><span th:text="${temperature}">32.0</span>°C</p>
+                </div>
+                <div class="weather-icon">
+                    <img th:src="@{'http://openweathermap.org/img/wn/' + ${icon} + '@4x.png'}" alt="Biểu tượng thời tiết" />
+                </div>
+                <p class="description"><strong>Mô tả:</strong> <span th:text="${description}">Mây rải rác</span></p>
+            </div>
+
+            <div class="weather-right">
+                <div class="info-box">
+                    <p><strong>Độ ẩm:</strong> <span th:text="${humidity}">30</span>%</p>
+                </div>
+                <div class="info-box">
+                    <p><strong>Áp suất:</strong> <span th:text="${pressure}">1010.0</span> hPa</p>
+                </div>
+                <div class="info-box">
+                    <p><strong>Gió:</strong> <span th:text="${windSpeed}">3.95</span> m/s 
+                    <br><strong>Hướng:</strong> <span th:text="${windDirection}">30</span>°</p>
+                </div>
+                <div class="info-box">
+                    <p><strong>Tầm nhìn:</strong> <span th:text="${visibility}">10.0</span> km</p>
+                </div>
+                <div class="info-box">
+                    <p><strong>Bình minh:</strong> <span th:text="${#dates.format(new java.util.Date(sunrise * 1000), 'HH:mm:ss')}">05:59:14</span></p>
+                </div>
+                <div class="info-box">
+                    <p><strong>Hoàng hôn:</strong> <span th:text="${#dates.format(new java.util.Date(sunset * 1000), 'HH:mm:ss')}">17:21:04</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5-Day Forecast -->
+    <h3 class="forecast-title">Dự Báo Thời Tiết 5 Ngày</h3>
+    <div class="forecast">
+        <div class="forecast-item" th:each="forecast : ${dailyForecasts}">
+            <p class="forecast-date"><span th:text="${forecast.date}">Ngày</span></p>
+            <div class="forecast-details">
+                <img th:src="@{'http://openweathermap.org/img/wn/' + ${forecast.dailyIcon} + '@2x.png'}" alt="Biểu tượng hàng ngày" />
+                <p><span th:text="${forecast.maxTemp}">Tối đa</span>° / <span th:text="${forecast.minTemp}">Tối thiểu</span>°C</p>
+                <p>Độ ẩm: <span th:text="${forecast.averageHumidity}">60</span>%</p>
+                <p class="visibility">Tầm nhìn: <span th:text="${forecast.visibility}"></span> km</p>
+                <p class="daily-description"><span th:text="${forecast.dailyDescription}">Mô tả</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Ứng dụng Thời Tiết • Được tạo bởi 21119761_Nguyễn Tấn Thiên</p>
+    </div>
+</div>
+
+</body>
+</html>

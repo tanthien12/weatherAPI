@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f1f9fb;
+    color: #003d33;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.weather-container {
+    width: 55%;
+    max-width: 900px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #004d40;
+    margin-bottom: 20px;
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.search-form input {
+    width: 70%;
+    padding: 8px;
+    border: 1px solid #004d40;
+    border-radius: 10px 0 0 10px;
+    font-size: 1rem;
+}
+
+.search-form button {
+    padding: 8px;
+    background-color: #004d40;
+    color: white;
+    border: none;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.search-form button:hover {
+    background-color: #00796b;
+}
+
+.city {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #00796b;
+    margin-bottom: 30px;
+}
+
+.error-message {
+    color: red; /* Màu chữ đỏ */
+    margin-top: 15px; /* Khoảng cách phía trên với các phần tử khác */
+    font-size: 1rem; /* Kích thước chữ */
+    font-weight: bold; /* Làm chữ đậm hơn để nổi bật */
+    margin-bottom: 30px;
+}
+
+
+.current-weather {
+    padding: 30px;  /* Thêm padding để làm box rộng hơn */
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background-color: #e0f2f1;
+    margin-bottom: 30px;  /* Tăng khoảng cách dưới box */
+}
+
+.current-weather-content {
+    display: flex;
+    gap: 15px;
+}
+
+.weather-left {
+    flex: 2;
+    text-align: center;
+}
+
+.temperature {
+    font-size: 3rem; /* Tăng kích thước chữ nhiệt độ */
+    font-weight: bold;
+    color: #004d40;
+    margin-bottom: 5px;
+}
+
+.weather-icon img {
+    width: 90px;
+    height: 90px;
+}
+
+.description {
+    font-size: 1.2rem; /* Tăng kích thước chữ mô tả */
+    color: #00695c;
+}
+
+.weather-right {
+    flex: 3;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-evenly;
+}
+
+.info-box {
+    background-color: #ffffff;
+    padding: 12px; /* Tăng padding cho box */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1rem; /* Tăng kích thước chữ cho các phần */
+    color: #004d40;
+    width: 45%;
+    text-align: left;
+}
+
+.forecast-title {
+    font-size: 1.5rem; /* Tăng kích thước chữ cho tiêu đề dự báo */
+    margin-top: 30px; /* Tăng khoảng cách lên trên */
+    color: #004d40;
+}
+
+.forecast {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.forecast-item {
+    background-color: #b2ebf2;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.forecast-item:hover {
+    transform: scale(1.05);
+}
+
+.forecast-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.85rem;
+    color: #003d33;
+}
+
+.forecast-date {
+    font-weight: bold;
+    color: #004d40;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #004d40;
+    font-weight: bold;
+}
